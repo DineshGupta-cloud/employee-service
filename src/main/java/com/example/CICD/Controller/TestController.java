@@ -12,13 +12,4 @@ public class TestController {
     public String hello() {
         return "CI/CD Working";
     }
-
-    @GetMapping("/")
-    public String hi() {
-        return "CI/CD Working";
-    }
-    @GetMapping("/hi")
-    public String hi1() {
-        return "CI/CD Working";
-    }
 }
