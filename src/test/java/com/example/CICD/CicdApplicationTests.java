@@ -8,6 +8,7 @@ class CicdApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("we are at test part ");
 	}
 
 }
