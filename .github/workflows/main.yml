@@ -1,8 +1,9 @@
-name: CICD
+name: CICD 
 on:
   push:
     branches:
       - main
+
 
 jobs:
   build:
