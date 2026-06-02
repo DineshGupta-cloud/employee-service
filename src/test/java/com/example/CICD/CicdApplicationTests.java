@@ -10,7 +10,7 @@ class CicdApplicationTests {
 
 	@Test
 	void contextLoads() {
-		assertEquals(5, 2 + 3);
+		assertEquals(11, 2 + 3+6);
 	}
 
 }
