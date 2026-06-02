@@ -12,4 +12,9 @@ public class TestController {
     public String hello() {
         return "CI/CD Working";
     }
+
+    @GetMapping("/home")
+    public String home() {
+        return "CI/CD Working with change ";
+    }
 }
