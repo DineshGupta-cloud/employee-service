@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -31,10 +33,29 @@ public class TestController {
         return f;
     }
 
-    @GetMapping("/symbolStock")
-    public Map<Boolean,List<OptionData>> symbolList() {
+    @GetMapping("/symbolStock1")
+    public Map<LocalDate,List<OptionData>> symbolList() {
 
-        Map<Boolean,List<OptionData>> f = nseService.getStock();
+
+        Map<LocalDate,List<OptionData>> f =   nseService.getBYSymbol();
+
         return f;
+    }
+    @GetMapping("/symbolStock")
+    public Map<Boolean,List<OptionData>> symbolList1() {
+
+        nseService.getBYSymbol();
+        Map<Boolean,List<OptionData>> f = nseService.getStock();
+
+        return f;
+    }
+
+    @GetMapping("/expDate")
+    public List<LocalDate> expDate() {
+
+        List<LocalDate> c= nseService.getBYExpiryDate();
+
+
+        return c;
     }
 }

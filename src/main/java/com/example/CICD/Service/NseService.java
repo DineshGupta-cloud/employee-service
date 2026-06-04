@@ -5,8 +5,11 @@ import com.example.CICD.repository.OptionDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,5 +33,23 @@ public class NseService {
                 .collect(Collectors.partitioningBy(t->t.getOptionType()=="CE"));
         System.out.println(d);
         return d;
+    }
+
+    public Map<LocalDate,List<OptionData>> getBYSymbol(){
+        List<OptionData> s = optionDataRepository.findAll();
+        Map<LocalDate,List<OptionData>> f = s.stream().filter(d->d.getSymbol().equals("ADANIENSOL")).collect(Collectors.groupingBy(OptionData::getExpiryDate));
+        System.out.println(f);
+        return f;
+    }
+
+    public List<LocalDate> getBYExpiryDate() {
+
+        return optionDataRepository.findAll()
+                .stream()
+                .map(OptionData::getExpiryDate)
+                .filter(Objects::nonNull)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
