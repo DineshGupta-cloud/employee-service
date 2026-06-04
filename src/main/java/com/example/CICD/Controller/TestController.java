@@ -30,6 +30,7 @@ public class TestController {
     public List<String> symbol() {
 
         List<String> f = nseService.getStocksList();
+
         return f;
     }
 
